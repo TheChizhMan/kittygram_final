@@ -9,8 +9,7 @@ import requests
 def _get_validated_link(
         deploy_file_info: tuple[Path, str],
         deploy_info_file_content: dict[str, str],
-        link_key: str
-        ) -> str:
+        link_key: str) -> str:
     _, path_to_deploy_info_file = deploy_file_info
     assert link_key in deploy_info_file_content, (
         f'Убедитесь, что файл `{path_to_deploy_info_file}` содержит ключ '
@@ -61,8 +60,7 @@ def _get_js_link(response: requests.Response) -> Optional[str]:
 def test_link_connection(
         deploy_file_info: tuple[Path, str],
         deploy_info_file_content: dict[str, str],
-        link_key: str
-        ) -> None:
+        link_key: str) -> None:
     link = _get_validated_link(deploy_file_info, deploy_info_file_content,
                                link_key)
     response = _make_safe_request(link)
@@ -93,8 +91,7 @@ def test_link_connection(
 def test_projects_on_same_ip(
         deploy_file_info: tuple[Path, str],
         deploy_info_file_content: dict[str, str],
-        kittygram_link_key: str, taski_link_key: str
-        ) -> None:
+        kittygram_link_key: str, taski_link_key: str) -> None:
     links = [
         _get_validated_link(deploy_file_info, deploy_info_file_content,
                             link_key)
@@ -114,8 +111,7 @@ def test_projects_on_same_ip(
 def test_kittygram_static_is_available(
         deploy_file_info: tuple[Path, str],
         deploy_info_file_content: dict[str, str],
-        kittygram_link_key: str
-        ) -> None:
+        kittygram_link_key: str) -> None:
     link = _get_validated_link(deploy_file_info, deploy_info_file_content,
                                kittygram_link_key)
     response = _make_safe_request(link)
@@ -136,8 +132,7 @@ def test_kittygram_static_is_available(
 def test_kittygram_api_available(
         deploy_file_info: tuple[Path, str],
         deploy_info_file_content: dict[str, str],
-        kittygram_link_key: str
-        ) -> None:
+        kittygram_link_key: str) -> None:
     link = _get_validated_link(deploy_file_info, deploy_info_file_content,
                                kittygram_link_key)
     signup_link = f'{link}/api/users/'

@@ -37,7 +37,7 @@ jobs:
         POSTGRES_DB: kittygram
         DB_HOST: 127.0.0.1
         DB_PORT: 5432
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}  # Здесь используйте секретные переменные.
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DEBUG: ${{ secrets.DEBUG }}
         HOSTS: ${{ secrets.HOSTS }}
       run: |
